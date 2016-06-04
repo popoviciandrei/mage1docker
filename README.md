@@ -11,48 +11,49 @@ Follow these steps to set your own docker setup and run a magento or any other w
 
 1. Install docker from here: https://www.docker.com/products/docker-toolbox.
 
-2. After install is complete start "Docker Quick Start Terminal" or run this into a terminal:
-```
-$ /Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh
-```
-
-This should start the docker environment.
+2. After install is complete start "Docker Quick Start Terminal" or run this into a terminal on a MAC:
+	```
+	$ sh /Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh
+	```
+	On different OS this path may be differnt.
+	
+	This should start the docker environment.
 
 3. Create a new work folder for ex:
-```
-$ mkdir -p ~/Work/docker/magento && cd ~/Work/docker/magento.
-```
+	```
+	$ mkdir -p ~/Work/docker/magento && cd ~/Work/docker/magento.
+	```
 
-I'll be using this ~/Work/docker/magento as a home folder.
+	I'll be using this ~/Work/docker/magento as a home folder.
 
 4. Clone the current repository into this folder.
-```
-$ git clone https://github.com/popoviciandrei/dockerplay.git .
-```
+	```
+	$ git clone https://github.com/popoviciandrei/dockerplay.git .
+	```
 5. Get the docker ip via this command:
-```
-$ docker-machine ip default
-```
-Take this ip and replace the default 192.168.99.100 on this line 'XDEBUG_CONFIG: remote_host=192.168.99.100' inside the 'docker-compose.yaml' if different. This is needed to make the xdebug to work later.
+	```
+	$ docker-machine ip default
+	```
+	Take this ip and replace the default 192.168.99.100 on this line 'XDEBUG_CONFIG: remote_host=192.168.99.100' inside the 'docker-compose.yaml' if different. This is needed to make the xdebug to work later.
 
 6. Add a new line in the /etc/hosts:  192.168.99.100 magento.docker.example.com . Replace 192.168.99.100 with the ip found at step 5
 7. Initialie docker containers with:
-```
-$ docker-compose up -d
-```
+	```
+	$ docker-compose up -d
+	```
 8. Up to now all the commands were run inside the home folder created at step 3. Now create a new folder in here 'www' and go into it:
-```
-$ mkdir www && cd www
-```
+	```
+	$ mkdir www && cd www
+	```
 9. Inside www copy/clone your magento instalation and make sure the index.php of magento is in this folder.
 
 10. Create the local.xml inside app/etc and make sure that you set these values inside the <connection> tag:
-```xml
-<host><![CDATA[192.168.99.100]]></host>
-<username><![CDATA[root]]></username>
-<password><![CDATA[root]]></password>
-<dbname><![CDATA[magento]]></dbname>
-```
+	```xml
+	<host><![CDATA[192.168.99.100]]></host>
+	<username><![CDATA[root]]></username>
+	<password><![CDATA[root]]></password>
+	<dbname><![CDATA[magento]]></dbname>
+	```
 11. Now everything should be in place. So if you navigate to http://magento.docker.example.com/ after a few moments you should see a default magento instalation.
 
 12. If you want to use n98-magerun to do specific magento tasks you need to connect into php docker container.
