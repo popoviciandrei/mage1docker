@@ -32,7 +32,12 @@ Follow these steps to set your own docker setup and run a magento or any other w
 	```
 	$ docker-machine ip default
 	```
-	Take this ip and replace the default 192.168.99.100 on this line 'XDEBUG_CONFIG: remote_host=192.168.99.100' inside the 'docker-compose.yaml' if different. This is needed to make the xdebug to work later.
+	By default should be something like 192.168.99.100.
+	 Then run this command:
+	 ```
+	 $ ifconfig
+	 ```
+	 You'll get a list of network adapters from you phisical machine and some configs for each of them. Identify the ip (inet) that is in the same family with your docker-machine. On my machine is 192.168.99.1 Take this ip replace the one that is already added inside inside the 'docker-compose.yaml' at line 'XDEBUG_CONFIG: remote_host=192.168.99.1'  if different. This is needed to make the xdebug to work later.
 
 6. Add a new line in the /etc/hosts:  192.168.99.100 magento.docker.example.com . Replace 192.168.99.100 with the ip found at step 5
 
@@ -79,4 +84,4 @@ Follow these steps to set your own docker setup and run a magento or any other w
 	```
 	* Go to url http://magento.docker.example.com/admin. Enter user: admin, password: password123. You should be able to login.
 14. Also on this docker setup we have phpmyadmin to have a db interface gui.
-	You can access it from with from this url: http://192.168.99.100:8080. Enter user: root, password: root.	
+	You can access it from with from this url: http://192.168.99.100:8080. Enter user: root, password: root.		

@@ -10,7 +10,7 @@ nginx:
 php:
   build:  ./php/
   environment:
-    XDEBUG_CONFIG: remote_host=192.168.99.100
+    XDEBUG_CONFIG: remote_host=192.168.99.1
   expose: 
     - 9000
   links:
