@@ -5,8 +5,10 @@ This docker setup was created for OS X. I'll confirm in the future if it works o
 
 Also this docker should be setup on the non sensitive disk parition. When I tried to do the same on my case sensitive partion the folders couldn't be mounted in  the running containers.
 
-Setup:
+Setup V1:
 ----------------------------
+*Note: This setup is good for old docker that uses software like Virtual Box to run their containers*
+
 Follow these steps to set your own docker setup and run a magento or any other website on your local machine:
 
 1. Install docker from here: https://www.docker.com/products/docker-toolbox.
