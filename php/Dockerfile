@@ -9,6 +9,7 @@ RUN	apt-get install -y xml-core
 RUN	apt-get install -y libpng12-dev
 RUN	apt-get install -y libxml2-dev
 RUN	apt-get install -y php-http-request
+RUN	apt-get install -y mysql-client
 	
 
 # Install php mysql extension	
